@@ -3,66 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume to Website — Instant Portfolio Generator</title>
+  <title>Resume to Portfolio — Professional Website Generator</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+      color: white;
+      padding: 3rem 0;
+      margin: 0 0 2rem 0;
+      border-radius: 12px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-section h2 {
+      font-size: 2.2rem;
+      margin: 0 0 0.8rem;
+      font-weight: 700;
+    }
+    .hero-section p {
+      font-size: 1.1rem;
+      margin: 0;
+      opacity: 0.95;
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .two-column { grid-template-columns: 1fr; }
+      .hero-section h2 { font-size: 1.6rem; }
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+    .feature-list li {
+      padding: 0.4rem 0;
+      color: var(--text-secondary);
+    }
+    .feature-list li::before {
+      content: "✓ ";
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>Resume to Website</h1>
-      <p>Convert Your Resume into a Professional Portfolio in Seconds</p>
+      <h1>Resume to Portfolio</h1>
+      <p>Transform Your Resume Into a Professional Website in Seconds</p>
     </div>
   </header>
 
   <main class="container">
+    <section class="hero-section">
+      <div style="padding: 0 1.8rem;">
+        <h2>Build Your Professional Portfolio Now</h2>
+        <p>Upload any resume format and instantly generate a stunning, professional portfolio website. Share with employers, recruiters, or agencies.</p>
+      </div>
+    </section>
+
+    <div class="two-column">
+      <section class="card">
+        <h2>Paste Your Resume</h2>
+        <p>Copy and paste your resume text or job description:</p>
+        <textarea id="resumeInput" placeholder="Paste your full resume here..." style="min-height:250px;"></textarea>
+        <button id="importBtn" style="width:100%; margin-top:1rem;">Generate My Website</button>
+        <p id="importStatus" class="status"></p>
+      </section>
+
+      <section class="card">
+        <h2>Or Upload Resume File</h2>
+        <p>Upload any resume file (PDF, DOCX, TXT, and more):</p>
+        <input id="resumeFile" type="file" style="margin: 1rem 0;" />
+        <button id="importFileBtn" style="width:100%;">Import Resume File</button>
+        <p id="fileStatus" class="status"></p>
+      </section>
+    </div>
+
     <section class="card">
       <h2>How It Works</h2>
-      <p>Paste your resume text or upload a PDF, and we'll instantly generate a professional, shareable website showcasing your experience, education, skills, and achievements.</p>
-    </section>
-
-    <section class="card">
-      <h2>Paste Your Resume</h2>
-      <p>Copy and paste your resume text below:</p>
-      <textarea id="resumeInput" placeholder="Paste your full resume here..." style="width:100%; min-height:200px; padding:0.8rem; border-radius:8px; border:1px solid #384760; font-family:monospace;"></textarea>
-      <button id="importBtn" style="margin-top:0.8rem; padding:0.8rem 1.5rem; font-size:1rem; border:none; border-radius:7px; background:#42b3ff; color:#fff; cursor:pointer;">Generate My Website</button>
-      <p id="importStatus" style="margin-top:0.6rem; color:#93b8dd;"></p>
-    </section>
-
-    <section class="card">
-      <h2>Or Upload Resume File</h2>
-      <p>Upload any resume file (PDF, DOCX, TXT, DOC, etc.):</p>
-      <input id="resumeFile" type="file" style="width:100%; margin: 0.5rem 0;" />
-      <button id="importFileBtn" style="margin-top:0.3rem; padding:0.8rem 1.5rem; font-size:1rem; border:none; border-radius:7px; background:#42b3ff; color:#fff; cursor:pointer;">Import File</button>
-      <p id="fileStatus" style="margin-top:0.6rem; color:#93b8dd;"></p>
+      <ol style="color: var(--text-secondary); line-height: 1.9; padding-left: 1.5rem;">
+        <li><strong>Upload or paste</strong> your resume in any format</li>
+        <li><strong>We parse</strong> your experience, education, skills, and achievements</li>
+        <li><strong>Generate</strong> a professional portfolio website instantly</li>
+        <li><strong>Preview</strong> your site in real-time</li>
+        <li><strong>Download</strong> as a standalone HTML file</li>
+        <li><strong>Share</strong> your portfolio anywhere</li>
+      </ol>
     </section>
 
     <section id="previewSection" class="card" style="display:none;">
       <h2>Your Website Preview</h2>
-      <iframe id="previewFrame" style="width:100%; height:600px; border:1px solid #384760; border-radius:8px;"></iframe>
-      <button id="downloadBtn" style="margin-top:0.8rem; padding:0.8rem 1.5rem; font-size:1rem; border:none; border-radius:7px; background:#42b3ff; color:#fff; cursor:pointer;">Download as HTML</button>
-      <p id="downloadStatus" style="margin-top:0.6rem; color:#93b8dd;"></p>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">This is how your professional portfolio will look:</p>
+      <iframe id="previewFrame" style="width:100%; height:700px; border-radius:8px;"></iframe>
+      <button id="downloadBtn" style="width:100%; margin-top:1.2rem;">⬇ Download as HTML</button>
+      <p id="downloadStatus" class="status" style="text-align:center;"></p>
     </section>
 
     <section class="card">
       <h2>Features</h2>
-      <ul style="list-style: none; padding: 0;">
-        <li>✓ Professional dark/blue theme</li>
-        <li>✓ Responsive design (works on all devices)</li>
-        <li>✓ Auto-parses experience, education, skills</li>
-        <li>✓ Downloadable as standalone HTML</li>
-        <li>✓ Share your link instantly</li>
+      <ul class="feature-list">
+        <li>Professional dark & light themes optimized for engineering roles</li>
+        <li>Fully responsive design (works on all devices)</li>
+        <li>Auto-parses experience, education, skills, and awards</li>
+        <li>Beautiful typography and modern layout</li>
+        <li>Download as standalone HTML (no hosting needed)</li>
+        <li>Supports PDF, DOCX, TXT, and more file formats</li>
+        <li>Free and no sign-up required</li>
+        <li>Instant generation and preview</li>
       </ul>
+    </section>
+
+    <section class="card">
+      <h2>Supported File Formats</h2>
+      <table style="width:100%; border-collapse:collapse;">
+        <tr style="border-bottom: 1px solid var(--border);">
+          <th style="text-align:left; padding:0.8rem 0; color:var(--accent); font-weight:700;">Format</th>
+          <th style="text-align:left; padding:0.8rem 0; color:var(--accent); font-weight:700;">Status</th>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:0.8rem 0;">PDF (.pdf)</td>
+          <td style="padding:0.8rem 0; color:var(--success);">✓ Supported</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:0.8rem 0;">Word (.docx, .doc)</td>
+          <td style="padding:0.8rem 0; color:var(--success);">✓ Supported</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:0.8rem 0;">Text (.txt)</td>
+          <td style="padding:0.8rem 0; color:var(--success);">✓ Supported</td>
+        </tr>
+        <tr>
+          <td style="padding:0.8rem 0;">Any text file</td>
+          <td style="padding:0.8rem 0; color:var(--success);">✓ Supported</td>
+        </tr>
+      </table>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>Free Resume Portfolio Generator — Created by Ethan Flood</p>
+      <p>Free Resume to Portfolio Generator for Engineering Professionals — Made by Ethan Flood</p>
     </div>
   </footer>
 
-  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mammoth@1/mammoth.browser.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

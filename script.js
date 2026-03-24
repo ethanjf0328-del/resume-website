@@ -106,44 +106,155 @@ function parseResumeText(raw) {
 function generatePortfolioHTML(data) {
   const css = `
 :root {
-  --bg: #0b1220;
-  --card: #111d32;
-  --text: #e9eef8;
-  --muted: #94a7c2;
-  --accent: #42b3ff;
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #1a202c;
+  --text-secondary: #718096;
+  --border: #e2e8f0;
+  --accent: #0066cc;
+  --accent-light: #e8f4ff;
+  --success: #22c55e;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: linear-gradient(160deg, #0f1730, #070a13);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
 }
-.container { width: min(1100px, 95%); margin: 0 auto; }
+.container { width: min(1200px, 96%); margin: 0 auto; }
 .site-header {
-  background: rgba(11, 18, 32, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 2rem 0;
-  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
 }
-.site-header h1 { margin: 0; font-size: 2.2rem; }
-.site-header p { margin: .4rem 0; color: var(--muted); }
-.contact { display: flex; flex-wrap: wrap; gap: .75rem; }
-.contact a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-.card { background: var(--card); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; }
-.card h2 { margin-top: 0; font-size: 1.35rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
-.entry { margin-top: 0.8rem; }
-.entry h3 { margin: .25rem 0; color: #d2dff5; }
-.date { color: var(--muted); font-size: .93rem; margin: .1rem 0 .5rem; }
-.entry ul { margin: 0.3rem 0; padding-left: 1.5rem; }
-.entry li { margin: 0.2rem 0; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .7rem; padding: 0; list-style: none; margin: 0; }
-.skills-grid li { background: rgba(66, 179, 255, 0.14); border: 1px solid rgba(66, 179, 255, 0.25); padding: .5rem .6rem; border-radius: 6px; }
-.site-footer { text-align: center; color: var(--muted); padding: 1rem 0; }
-@media (max-width: 650px) {
-  .site-header h1 { font-size: 1.5rem; }
-  .site-header p { font-size: .9rem; }
+.site-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+.site-header p {
+  margin: 0.5rem 0 1.2rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.contact a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.contact a:hover { color: var(--accent); opacity: 0.8; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card h2::before {
+  content: '';
+  width: 4px;
+  height: 1.5rem;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.entry {
+  margin-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.entry:last-child { border-bottom: none; margin-bottom: 0; }
+.entry h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.entry-subtitle {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0.6rem;
+  font-weight: 500;
+}
+.entry ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+.entry li { margin: 0.35rem 0; color: var(--text); }
+.entry p { margin: 0.3rem 0; color: var(--text-secondary); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.8rem;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.skills-grid li {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid #b3d9ff;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+.skills-grid li:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+.summary-text { color: var(--text-secondary); line-height: 1.8; }
+.site-footer {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .site-header { padding: 2rem 0; margin-bottom: 1.5rem; }
+  .site-header h1 { font-size: 2rem; }
+  .site-header p { font-size: 1rem; }
+  .contact { gap: 0.8rem; }
+  .card { padding: 1.2rem; }
+  .skills-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
 }
   `;
 
@@ -177,25 +288,25 @@ body {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${data.name || 'Resume'}</title>
+  <title>${data.name || 'Professional Portfolio'}</title>
   <style>${css}</style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>${data.name || 'Your Name'}</h1>
-      <p>${data.title || 'Professional'}</p>
+      <h1>${data.name || 'Professional'}</h1>
+      <p>${data.title || 'Engineering Professional'}</p>
       <div class="contact">
         ${contactLinks.join('')}
       </div>
-      ${data.location ? `<p style="color:#94a7c2; margin-top:.65rem;">${data.location}</p>` : ''}
+      ${data.location ? `<p style="color: var(--text-secondary); margin-top: 1rem; font-weight: 500;">${data.location}</p>` : ''}
     </div>
   </header>
 
   <main class="container">
     ${data.summary ? `<section class="card">
       <h2>Professional Summary</h2>
-      <p>${data.summary}</p>
+      <p class="summary-text">${data.summary}</p>
     </section>` : ''}
 
     ${data.experience.length > 0 ? `<section class="card">
@@ -209,19 +320,21 @@ body {
     </section>` : ''}
 
     ${data.skills.length > 0 ? `<section class="card">
-      <h2>Skills</h2>
+      <h2>Technical Skills</h2>
       <ul class="skills-grid">${skillsHtml}</ul>
     </section>` : ''}
 
     ${data.awards.length > 0 ? `<section class="card">
-      <h2>Honors & Awards</h2>
-      ${awardsHtml}
+      <h2>Honors & Certifications</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        ${data.awards.map(a => `<div style="padding: 0.8rem; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 6px;"><p style="margin: 0; color: var(--text); font-weight: 600;">${a}</p></div>`).join('')}
+      </div>
     </section>` : ''}
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>Generated with Resume to Website Converter</p>
+      <p>Professional Portfolio Generated with Resume to Website Converter</p>
     </div>
   </footer>
 </body>
