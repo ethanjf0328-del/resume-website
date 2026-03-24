@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume Website</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 id="name">Ethan J. Flood</h1>
+      <p id="title">Mechanical Engineering Undergraduate | University of Hartford</p>
+      <div class="contact">
+        <a id="email" href="mailto:Ethanjf0328@gmail.com">Ethanjf0328@gmail.com</a>
+        <a id="email2" href="mailto:Eflood@hartford.edu">Eflood@hartford.edu</a>
+        <a id="linkedin" href="#" target="_blank">LinkedIn</a>
+        <a id="github" href="#" target="_blank">GitHub</a>
+      </div>
+      <p style="color:#94a7c2; margin-top:.65rem;">Plantsville, CT • 860-863-6292</p>
+    </div>
+  </header>
+
+  <section class="card" style="margin: 1rem auto; max-width: 1100px;">
+    <h2>Quick Import Resume</h2>
+    <p>Paste your resume text below and click <strong>Import</strong>. The page will be populated automatically.</p>
+    <textarea id="resumeInput" placeholder="Paste your resume text here..." style="width:100%; min-height:160px; padding:0.8rem; border-radius:8px; border:1px solid #384760;"></textarea>
+    <button id="importBtn" style="margin-top:0.8rem; padding:0.65rem 1rem; font-size:1rem; border:none; border-radius:7px; background:#42b3ff; color:#fff;">Import</button>
+    <p id="importStatus" style="margin-top:0.6rem; color:#93b8dd;"></p>
+  </section>
+
+  <section class="card" style="margin: 1rem auto; max-width: 1100px;">
+    <h2>Import from PDF</h2>
+    <p>Upload your resume PDF to auto-extract text and fill the page.</p>
+    <input id="resumePdf" type="file" accept="application/pdf" style="width:100%; margin: 0.5rem 0;" />
+    <button id="importPdfBtn" style="margin-top:0.3rem; padding:0.65rem 1rem; font-size:1rem; border:none; border-radius:7px; background:#42b3ff; color:#fff;">Import PDF</button>
+    <p id="pdfStatus" style="margin-top:0.6rem; color:#93b8dd;"></p>
+  </section>
+
+  <main class="container">
+    <section id="summary" class="card">
+      <h2>Professional Summary</h2>
+      <p>Motivated Mechanical Engineering student at University of Hartford, seeking hands-on engineering experience and professional networking. Proven track record in manufacturing, equipment setup, and customer-facing roles. Strong ability to learn quickly, operate tools/machinery, and contribute in dynamic team environments.</p>
+    </section>
+
+    <section id="experience" class="card">
+      <h2>Work Experience</h2>
+
+      <div class="entry">
+        <h3>Summer Help — Sign-Pro USA, Southington CT</h3>
+        <p class="date">June 2023 - August 2023</p>
+        <ul>
+          <li>Weeded vinyl, packed and shipped customer orders, performed on-site installations, and applied graphics in production workflows.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Summer Help — Sign-Pro USA, Southington CT</h3>
+        <p class="date">June 2024 - August 2024</p>
+        <ul>
+          <li>Performed repeat production and shipping duties while improving reliability and speed in order fulfillment.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Summer Help (Zund Operator) — Sign-Pro USA, Southington CT</h3>
+        <p class="date">June 2025 - August 2025</p>
+        <ul>
+          <li>Operated Zund vinyl cutting machine with precision, preparing high-volume parts for installation on diverse surfaces.</li>
+          <li>Programmed and adjusted material settings to support custom, precise graphics and signage components.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Winter Help — Sign-Pro USA, Southington CT</h3>
+        <p class="date">December 2025 - January 2026</p>
+        <ul>
+          <li>Stripped vinyl from vehicles, applied graphics, packed shipments, and supported general shop tasks in a fast-paced environment.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Sales Associate — Bob's Sports Chalet, Bristol CT</h3>
+        <p class="date">September 2024 - April 2025</p>
+        <ul>
+          <li>Advised customers on ski and snowboard equipment selection based on performance needs and ability.</li>
+          <li>Maintained ski shop services with waxing, sharpening, tuning, and mounting equipment.</li>
+          <li>Completed vendor-led product training to improve customer service and technical expertise.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education" class="card">
+      <h2>Education</h2>
+
+      <div class="entry">
+        <h3>Mechanical Engineering, Undergraduate — University of Hartford</h3>
+        <p class="date">Class of 2029</p>
+        <p>Second semester Mechanical Engineering student. Completed: Calculus I, Chemistry, Chemistry Lab, Engineering and Design, Academic Writing. Currently enrolled in Calculus II, Physics I + Lab, Graphic Communication, Engineering Computer Applications.</p>
+      </div>
+
+      <div class="entry">
+        <h3>High School Diploma — Southington High School</h3>
+        <p class="date">Class of 2025</p>
+        <p>Completed Project Lead The Way program with coursework in Introduction to Engineering, Digital Electronics, Computer Integrated Manufacturing, Principles of Engineering, Writing for Science and Engineers, and Senior Capstone Project.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <ul class="skills-grid">
+        <li>Machine Operation (Zund Vinyl Cutter)</li>
+        <li>Graphic Application & Vinyl Work</li>
+        <li>3D Modeling Software</li>
+        <li>3D Printing</li>
+        <li>Hands-on Tool Proficiency</li>
+        <li>Microsoft/Google Workspace</li>
+        <li>Strong Work Ethic (40-50 hrs/wk)</li>
+        <li>Customer Service</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Honors & Awards</h2>
+      <div class="entry">
+        <p>June 2021 - Mary Ann Tassie Humanitarian and Service Award</p>
+        <p>Summer 2021 - NYLT National Youth Leadership Training</p>
+        <p>September 2021 - Accepted into Project Lead the Way Engineering Program</p>
+        <p>January 2022 - Freshman Student of the Month</p>
+        <p>May 2022 - Southington High School Make My Day Award</p>
+        <p>May 2023 - Eagle Scout Project, built Gaga Pit at Strong Elementary School</p>
+        <p>December 2023 - Eagle Scout and Bronze Palm</p>
+        <p>December 2025 - 5th place Best Engineering Project at CETA Design Expo</p>
+      </div>
+    </section>
+
+    <section id="languages" class="card">
+      <h2>Languages</h2>
+      <p>English (Native)</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Built with HTML, CSS, and a little JavaScript. Update the content in <code>index.html</code>.</p>
+    </div>
+  </footer>
+
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
