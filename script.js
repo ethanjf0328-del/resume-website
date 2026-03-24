@@ -139,24 +139,132 @@ body {
   position: relative;
 }
 
-/* Header Section */
-.resume-header {
-  text-align: center;
-  padding-bottom: 24px;
-  margin-bottom: 32px;
-  border-bottom: 3px solid #2563eb;
-  position: relative;
+.resume-body {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
 }
 
-.resume-header::after {
+.sidebar {
+  background: #1f2937;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  padding: 24px;
+}
+
+.sidebar h2 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: #f8fafc;
+}
+
+.sidebar .mini-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 14px 0 8px;
+  color: #93c5fd;
+}
+
+.sidebar p,
+.sidebar a,
+.sidebar li {
+  color: #d1d5db;
+}
+
+.sidebar a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+  font-size: 11pt;
+}
+
+.profile-block {
+  background: #111827;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-block .avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #374151;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.profile-block h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.profile-block p { margin: 0; font-size: 11pt; color: #9ca3af; }
+
+.main-content {
+  background: #ffffff;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 14px;
+  border-left: 2px solid #e5e7eb;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
   content: '';
   position: absolute;
-  bottom: -3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  left: -9px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid white;
+}
+
+.objective-box {
+  background: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 900px) {
+  .resume-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    margin-bottom: 18px;
+  }
 }
 
 .name-title {
@@ -534,48 +642,32 @@ body {
 </head>
 <body>
   <div class="resume-container">
-    <div class="resume-header">
-      <div class="name-title">
-        <h1 class="resume-name">${data.name || 'Your Name'}</h1>
-        <p class="resume-title">${data.title || 'Engineering Professional'}</p>
-        ${data.location ? `<p class="resume-location">${data.location}</p>` : ''}
-      </div>
-      <div class="contact-section">
-        ${data.email ? `<div class="contact-item"><a href="mailto:${data.email}" class="contact-link">${data.email}</a></div>` : ''}
-        ${data.phone ? `<div class="contact-item">${data.phone}</div>` : ''}
-        ${data.linkedin ? `<div class="contact-item"><a href="${data.linkedin}" target="_blank" class="contact-link">LinkedIn</a></div>` : ''}
-        ${data.github ? `<div class="contact-item"><a href="${data.github}" target="_blank" class="contact-link">GitHub</a></div>` : ''}
-      </div>
+    <div class="resume-body">
+      <aside class="sidebar">
+        <div class="profile-block">
+          <div class="avatar">${(data.name || 'A').charAt(0)}</div>
+          <h3>${data.name || 'Your Name'}</h3>
+          <p>${data.title || 'Engineering Professional'}</p>
+        </div>
+
+        ${data.location ? `<div><h4 class="mini-title">Location</h4><p>${data.location}</p></div>` : ''}
+        ${data.phone ? `<div><h4 class="mini-title">Phone</h4><p>${data.phone}</p></div>` : ''}
+        ${data.email ? `<div><h4 class="mini-title">Email</h4><p><a href="mailto:${data.email}">${data.email}</a></p></div>` : ''}
+        ${data.linkedin ? `<div><h4 class="mini-title">LinkedIn</h4><p><a href="${data.linkedin}" target="_blank">${data.linkedin}</a></p></div>` : ''}
+        ${data.github ? `<div><h4 class="mini-title">GitHub</h4><p><a href="${data.github}" target="_blank">${data.github}</a></p></div>` : ''}
+
+        ${data.summary ? `<div class="mini-title">Objective</div><div class="objective-box">${data.summary}</div>` : ''}
+
+        ${data.skills.length > 0 ? `<div class="mini-title">Skills</div><ul class="skills-grid">${skillsHtml}</ul>` : ''}
+        ${data.awards.length > 0 ? `<div class="mini-title">Awards</div><ul class="awards-list">${awardsHtml}</ul>` : ''}
+      </aside>
+
+      <main class="main-content">
+        ${data.experience.length > 0 ? `<div class="section"><h2 class="section-title">Experience</h2><div class="timeline">${expHtml}</div></div>` : ''}
+
+        ${data.education.length > 0 ? `<div class="section"><h2 class="section-title">Education</h2><div class="timeline">${eduHtml}</div></div>` : ''}
+      </main>
     </div>
-
-    ${data.summary ? `<div class="section">
-      <h2 class="section-title">Professional Summary</h2>
-      <div class="summary-content">${data.summary}</div>
-    </div>` : ''}
-
-    ${data.experience.length > 0 ? `<div class="section">
-      <h2 class="section-title">Professional Experience</h2>
-      ${expHtml}
-    </div>` : ''}
-
-    ${data.education.length > 0 ? `<div class="section">
-      <h2 class="section-title">Education</h2>
-      ${eduHtml}
-    </div>` : ''}
-
-    ${data.skills.length > 0 ? `<div class="section">
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-section">
-        <ul class="skills-grid">${skillsHtml}</ul>
-      </div>
-    </div>` : ''}
-
-    ${data.awards.length > 0 ? `<div class="section">
-      <h2 class="section-title">Honors & Certifications</h2>
-      <ul class="awards-list">
-        ${awardsHtml}
-      </ul>
-    </div>` : ''}
   </div>
 </body>
 </html>`;
