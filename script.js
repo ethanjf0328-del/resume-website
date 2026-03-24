@@ -124,7 +124,7 @@ body {
   font-size: 11pt;
   line-height: 1.6;
   color: #1a1a1a;
-  background: #ffffff;
+  background: #f7f9fb;
   margin: 0;
   padding: 20px;
 }
@@ -133,206 +133,55 @@ body {
   max-width: 8.5in;
   margin: 0 auto;
   background: #ffffff;
-  padding: 0.75in;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 1px solid #e5e7eb;
-  position: relative;
-}
-
-.resume-body {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 24px;
-}
-
-.sidebar {
-  background: #1f2937;
-  color: white;
-  border-radius: 10px;
-  border: 1px solid #374151;
   padding: 24px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  border: 1px solid #e5e7eb;
 }
 
-.sidebar h2 {
-  margin: 0 0 16px;
-  font-size: 16px;
-  color: #f8fafc;
+.page {
+  page-break-after: always;
+  margin-bottom: 20px;
 }
 
-.sidebar .mini-title {
-  font-size: 12px;
+.page:last-child {
+  page-break-after: auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #dbeafe;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 14px 0 8px;
-  color: #93c5fd;
-}
-
-.sidebar p,
-.sidebar a,
-.sidebar li {
-  color: #d1d5db;
-}
-
-.sidebar a {
-  color: #93c5fd;
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  text-decoration: underline;
-}
-
-.sidebar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar li {
-  margin-bottom: 8px;
-  font-size: 11pt;
-}
-
-.profile-block {
-  background: #111827;
-  border-radius: 8px;
-  padding: 14px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.profile-block .avatar {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background: #374151;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.profile-block h3 {
-  margin: 0 0 4px;
-  font-size: 18px;
-  color: #f8fafc;
-}
-
-.profile-block p { margin: 0; font-size: 11pt; color: #9ca3af; }
-
-.main-content {
-  background: #ffffff;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 14px;
-  border-left: 2px solid #e5e7eb;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -9px;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #2563eb;
-  border: 2px solid white;
-}
-
-.objective-box {
-  background: #f1f5f9;
-  border-left: 4px solid #2563eb;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 16px;
-}
-
-@media screen and (max-width: 900px) {
-  .resume-body {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    margin-bottom: 18px;
-  }
-}
-
-.name-title {
-  margin-bottom: 8px;
-}
-
-.resume-name {
-  font-size: 28pt;
-  font-weight: 700;
   color: #1f2937;
-  letter-spacing: -0.5px;
-  margin-bottom: 4px;
-  text-transform: uppercase;
 }
 
-.resume-title {
-  font-size: 14pt;
-  font-weight: 500;
+.page-subtitle {
+  font-size: 12pt;
   color: #2563eb;
-  margin-bottom: 8px;
+  font-weight: 600;
+  margin-top: 4px;
 }
 
-.resume-location {
-  font-size: 11pt;
-  color: #6b7280;
-  font-weight: 400;
-  margin-bottom: 16px;
-}
-
-.contact-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+.page-meta {
+  text-align: right;
   font-size: 10pt;
+  color: #6b7280;
 }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #374151;
+.page-meta span {
+  display: block;
 }
 
-.contact-item::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: #2563eb;
-  border-radius: 50%;
-}
-
-.contact-link {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.contact-link:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-}
-
-/* Section Styles */
 .section {
-  margin-bottom: 28px;
-  page-break-inside: avoid;
+  margin-bottom: 18px;
 }
 
 .section-title {
@@ -341,274 +190,252 @@ body {
   color: #1f2937;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 6px;
+}
+
+.description {
+  font-size: 11pt;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 14px;
+  padding-left: 12px;
+  border-left: 2px solid #dbeafe;
+}
+
+.timeline-item {
+  margin-bottom: 16px;
   position: relative;
 }
 
-.section-title::after {
+.timeline-item::before {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  left: -10px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2563eb;
 }
 
-/* Summary Section */
-.summary-content {
-  font-size: 11pt;
-  line-height: 1.7;
-  color: #374151;
-  text-align: justify;
-  background: #f8fafc;
-  padding: 16px;
-  border-radius: 6px;
-  border-left: 4px solid #2563eb;
+.item-title {
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 2px;
 }
 
-/* Experience Section */
-.experience-entry {
-  margin-bottom: 20px;
-  padding: 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  transition: box-shadow 0.2s;
-}
-
-.experience-entry:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.item-meta {
+  color: #6b7280;
+  font-size: 10pt;
   margin-bottom: 8px;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
-.experience-title {
-  font-size: 12pt;
-  font-weight: 700;
-  color: #1f2937;
+.item-bullets {
   margin: 0;
-}
-
-.experience-company {
-  font-size: 11pt;
-  color: #2563eb;
-  font-weight: 600;
-  margin: 4px 0;
-}
-
-.experience-date {
-  font-size: 10pt;
-  color: #6b7280;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.experience-bullets {
-  margin-top: 8px;
-  padding-left: 0;
-}
-
-.experience-bullets li {
-  margin-bottom: 4px;
-  color: #374151;
-  font-size: 11pt;
-  line-height: 1.5;
-  position: relative;
   padding-left: 16px;
+  list-style: disc;
 }
 
-.experience-bullets li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: #2563eb;
-  font-weight: bold;
+.item-bullets li {
+  margin-bottom: 6px;
+  color: #374151;
 }
 
-/* Education Section */
-.education-entry {
-  margin-bottom: 16px;
-  padding: 12px;
-  background: #f8fafc;
-  border-radius: 6px;
-  border-left: 3px solid #10b981;
-}
-
-.education-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.education-degree {
-  font-size: 11pt;
-  font-weight: 700;
-  color: #1f2937;
-  margin: 0;
-}
-
-.education-school {
-  font-size: 10pt;
-  color: #059669;
-  font-weight: 600;
-  margin: 2px 0;
-}
-
-.education-date {
-  font-size: 10pt;
-  color: #6b7280;
-  font-weight: 500;
-}
-
-.education-details {
-  font-size: 10pt;
-  color: #6b7280;
-  margin-top: 4px;
-  font-style: italic;
-}
-
-/* Skills Section */
-.skills-section {
-  background: #f8fafc;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-}
-
-.skills-grid {
+.skills-list,
+.awards-list,
+.languages-list {
+  list-style: none;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 8px;
-  list-style: none;
 }
 
-.skill-item {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  color: #1e40af;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 10pt;
+.skills-list li,
+.awards-list li,
+.languages-list li {
+  background: #eff6ff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 10.5pt;
   font-weight: 600;
-  text-align: center;
-  border: 1px solid #93c5fd;
-  transition: transform 0.2s, box-shadow 0.2s;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
 }
 
-.skill-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.footer {
+  font-size: 9.5pt;
+  color: #6b7280;
+  text-align: right;
+  margin-top: 15px;
 }
 
-/* Awards Section */
-.awards-list {
-  list-style: none;
-  padding: 0;
-}
-
-.award-item {
-  padding: 8px 0;
-  border-bottom: 1px solid #f3f4f6;
-  position: relative;
-  padding-left: 20px;
-}
-
-.award-item:last-child {
-  border-bottom: none;
-}
-
-.award-item::before {
-  content: '🏆';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  font-size: 12pt;
-}
-
-.award-text {
-  font-size: 11pt;
-  color: #374151;
-  font-weight: 500;
-}
-
-/* Print Styles */
-@media print {
-  body {
-    margin: 0;
-    padding: 0;
-    background: white;
-  }
-
-  .resume-container {
-    max-width: 100%;
-    box-shadow: none;
-    border: none;
-    padding: 0.5in;
-  }
-
-  .experience-entry,
-  .education-entry {
-    break-inside: avoid;
-  }
-
-  .contact-link {
-    color: #000000 !important;
-    text-decoration: none !important;
-  }
-}
-
-/* Mobile Styles */
 @media screen and (max-width: 768px) {
-  .resume-container {
-    padding: 0.5in;
-  }
-
-  .resume-name {
-    font-size: 24pt;
-  }
-
-  .contact-section {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .experience-header,
-  .education-header {
+  .page-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  .page-meta {
+    text-align: left;
   }
 }
-  `;
+`;
 
-  const expHtml = data.experience.map(e => `
-    <div class="experience-entry">
-      <div class="experience-header">
-        <div>
-          <h3 class="experience-title">${e.title}</h3>
-          <div class="experience-company">${e.company || ''}</div>
-        </div>
-        <div class="experience-date">${e.date || ''}</div>
-      </div>
-      ${e.bullets.length > 0 ? `<ul class="experience-bullets">${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
+  // If name parse got polluted with long text, fallback to first 2 words
+  let name = data.name || 'Your Name';
+  if (name.split(' ').length > 8) {
+    name = (name.split(' ').slice(0, 2).join(' ') || 'Your Name');
+  }
+
+  const surname = data.title || 'Engineering Professional';
+
+  const experienceItems = data.experience.map((e) => `
+    <div class="timeline-item">
+      <div class="item-title">${e.title || 'Role'}</div>
+      <p class="item-meta">${e.company || ''}${e.company ? ' | ' : ''}${e.date || ''}</p>
+      ${e.bullets.length > 0 ? `<ul class="item-bullets">${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
     </div>
   `).join('');
+
+  const educationItems = data.education.map((e) => `
+    <div class="timeline-item">
+      <div class="item-title">${e.degree || 'Education'}</div>
+      <p class="item-meta">${e.school || ''}${e.school ? ' | ' : ''}${e.date || ''}</p>
+      ${e.details ? `<p class="description">${e.details}</p>` : ''}
+    </div>
+  `).join('');
+
+  const skillsHTML = data.skills.length ? `<ul class="skills-list">${data.skills.map(s => `<li>${s}</li>`).join('')}</ul>` : `<p class="description">Not provided.</p>`;
+  const awardsHTML = data.awards.length ? `<ul class="awards-list">${data.awards.map(a => `<li>${a}</li>`).join('')}</ul>` : `<p class="description">None listed.</p>`;
+
+  const languages = data.languages?.length ? `<ul class="languages-list">${data.languages.map(l => `<li>${l}</li>`).join('')}</ul>` : '';
+
+  // Page splitting by length driven by data size
+  const summaryPage = `
+    <section class="section">
+      <h3 class="section-title">Objective</h3>
+      <p class="description">${data.summary || 'Resume summary is not provided.'}</p>
+    </section>
+  `;
+
+  const expSplit = Math.ceil((data.experience.length || 0) / 5) || 1;
+  const experiencePages = [];
+  for (let i = 0; i < expSplit; i++) {
+    const chunk = data.experience.slice(i * 5, i * 5 + 5);
+    const chunkHtml = chunk.map(e => `
+      <div class="timeline-item">
+        <div class="item-title">${e.title || 'Role'}</div>
+        <p class="item-meta">${e.company || ''}${e.company ? ' | ' : ''}${e.date || ''}</p>
+        ${e.bullets.length > 0 ? `<ul class="item-bullets">${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
+      </div>
+    `).join('');
+    experiencePages.push(chunkHtml);
+  }
+
+  const pages = [];
+
+  // always first page includes objective + 2 experience entries at least
+  const firstPageExperience = experiencePages[0] || '';
+  pages.push(`
+    <div class="page">
+      <div class="page-header">
+        <div>
+          <div class="page-title">${name}</div>
+          <div class="page-subtitle">${surname}</div>
+        </div>
+        <div class="page-meta">
+          ${data.location ? `<span>${data.location}</span>` : ''}
+          ${data.email ? `<span>${data.email}</span>` : ''}
+          ${data.phone ? `<span>${data.phone}</span>` : ''}
+        </div>
+      </div>
+
+      ${summaryPage}
+      <section class="section">
+        <h3 class="section-title">Work Experience</h3>
+        <div class="timeline">${firstPageExperience}</div>
+      </section>
+
+      <section class="section">
+        <h3 class="section-title">Skills</h3>
+        ${skillsHTML}
+      </section>
+
+      <div class="footer">Page 1</div>
+    </div>
+  `);
+
+  // additional experience pages
+  for (let i = 1; i < experiencePages.length; i++) {
+    pages.push(`
+      <div class="page">
+        <div class="page-header">
+          <div>
+            <div class="page-title">${name}</div>
+            <div class="page-subtitle">${surname}</div>
+          </div>
+          <div class="page-meta">${data.location ? `<span>${data.location}</span>` : ''}</div>
+        </div>
+
+        <section class="section">
+          <h3 class="section-title">Work Experience (cont.)</h3>
+          <div class="timeline">${experiencePages[i]}</div>
+        </section>
+
+        <div class="footer">Page ${i + 1}</div>
+      </div>
+    `);
+  }
+
+  // last page: education + awards + languages
+  pages.push(`
+    <div class="page">
+      <div class="page-header">
+        <div>
+          <div class="page-title">${name}</div>
+          <div class="page-subtitle">${surname}</div>
+        </div>
+        <div class="page-meta">${data.location ? `<span>${data.location}</span>` : ''}</div>
+      </div>
+
+      <section class="section">
+        <h3 class="section-title">Education</h3>
+        <div class="timeline">${educationItems || '<p class="description">No education details yet.</p>'}</div>
+      </section>
+
+      <section class="section">
+        <h3 class="section-title">Awards & Certifications</h3>
+        ${awardsHTML}
+      </section>
+
+      ${languages ? `<section class="section"><h3 class="section-title">Languages</h3>${languages}</section>` : ''}
+
+      <div class="footer">Page ${pages.length + 1}</div>
+    </div>
+  `);
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${name} | ${surname}</title>
+  <style>${css}</style>
+</head>
+<body>
+  <div class="resume-container">
+    ${pages.join('')}
+  </div>
+</body>
+</html>`;
+}
 
   const eduHtml = data.education.map(e => `
     <div class="education-entry">
@@ -626,52 +453,7 @@ body {
   const skillsHtml = data.skills.length > 0 ? data.skills.map(s => `<li class="skill-item">${s}</li>`).join('') : '<li class="skill-item" style="color: #999;">No technical skills provided</li>';
   const awardsHtml = data.awards.length > 0 ? data.awards.map(a => `<li class="award-item"><span class="award-text">${a}</span></li>`).join('') : '<li class="award-item"><span class="award-text" style="color: #999;">No honors or certifications provided</span></li>';
 
-  const contactLinks = [];
-  if (data.email) contactLinks.push(`<a href="mailto:${data.email}">${data.email}</a>`);
-  if (data.phone) contactLinks.push(`<a>${data.phone}</a>`);
-  if (data.linkedin) contactLinks.push(`<a href="${data.linkedin}" target="_blank">LinkedIn</a>`);
-  if (data.github) contactLinks.push(`<a href="${data.github}" target="_blank">GitHub</a>`);
 
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${data.name || 'Professional Resume'} - Resume</title>
-  <style>${css}</style>
-</head>
-<body>
-  <div class="resume-container">
-    <div class="resume-body">
-      <aside class="sidebar">
-        <div class="profile-block">
-          <div class="avatar">${(data.name || 'A').charAt(0)}</div>
-          <h3>${data.name || 'Your Name'}</h3>
-          <p>${data.title || 'Engineering Professional'}</p>
-        </div>
-
-        ${data.location ? `<div><h4 class="mini-title">Location</h4><p>${data.location}</p></div>` : ''}
-        ${data.phone ? `<div><h4 class="mini-title">Phone</h4><p>${data.phone}</p></div>` : ''}
-        ${data.email ? `<div><h4 class="mini-title">Email</h4><p><a href="mailto:${data.email}">${data.email}</a></p></div>` : ''}
-        ${data.linkedin ? `<div><h4 class="mini-title">LinkedIn</h4><p><a href="${data.linkedin}" target="_blank">${data.linkedin}</a></p></div>` : ''}
-        ${data.github ? `<div><h4 class="mini-title">GitHub</h4><p><a href="${data.github}" target="_blank">${data.github}</a></p></div>` : ''}
-
-        ${data.summary ? `<div class="mini-title">Objective</div><div class="objective-box">${data.summary}</div>` : ''}
-
-        ${data.skills.length > 0 ? `<div class="mini-title">Skills</div><ul class="skills-grid">${skillsHtml}</ul>` : ''}
-        ${data.awards.length > 0 ? `<div class="mini-title">Awards</div><ul class="awards-list">${awardsHtml}</ul>` : ''}
-      </aside>
-
-      <main class="main-content">
-        ${data.experience.length > 0 ? `<div class="section"><h2 class="section-title">Experience</h2><div class="timeline">${expHtml}</div></div>` : ''}
-
-        ${data.education.length > 0 ? `<div class="section"><h2 class="section-title">Education</h2><div class="timeline">${eduHtml}</div></div>` : ''}
-      </main>
-    </div>
-  </div>
-</body>
-</html>`;
-}
 
 function installImportHandler() {
   const button = getElement('importBtn');
