@@ -105,200 +105,418 @@ function parseResumeText(raw) {
 
 function generatePortfolioHTML(data) {
   const css = `
-* { box-sizing: border-box; }
-html { 
-  scroll-behavior: smooth;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  scroll-behavior: smooth;
 }
+
 body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #ffffff;
   margin: 0;
   padding: 20px;
-  font-family: "Calibri", "Segoe UI", "Trebuchet MS", sans-serif;
-  background: #ffffff;
-  color: #000000;
-  line-height: 1.6;
-  font-size: 11pt;
 }
+
 .resume-container {
   max-width: 8.5in;
   margin: 0 auto;
-  background: white;
+  background: #ffffff;
   padding: 0.75in;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+  position: relative;
 }
+
+/* Header Section */
 .resume-header {
   text-align: center;
-  border-bottom: 2px solid #0066cc;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 3px solid #2563eb;
+  position: relative;
 }
-.resume-header h1 {
-  margin: 0;
-  font-size: 16pt;
-  font-weight: bold;
-  color: #000000;
-  letter-spacing: 0.5px;
+
+.resume-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
 }
-.resume-header p {
-  margin: 4px 0;
-  font-size: 11pt;
-  color: #333333;
+
+.name-title {
+  margin-bottom: 8px;
+}
+
+.resume-name {
+  font-size: 28pt;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.resume-title {
+  font-size: 14pt;
   font-weight: 500;
+  color: #2563eb;
+  margin-bottom: 8px;
 }
-.contact-info {
-  text-align: center;
-  font-size: 10pt;
-  margin: 6px 0;
+
+.resume-location {
+  font-size: 11pt;
+  color: #6b7280;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.contact-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
+  font-size: 10pt;
 }
-.contact-info a {
-  color: #0066cc;
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #374151;
+}
+
+.contact-item::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: #2563eb;
+  border-radius: 50%;
+}
+
+.contact-link {
+  color: #2563eb;
   text-decoration: none;
-  word-break: break-word;
+  font-weight: 500;
+  transition: color 0.2s;
 }
-.contact-info a:hover { text-decoration: underline; }
+
+.contact-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Section Styles */
 .section {
-  margin-bottom: 12px;
-}
-.section-title {
-  font-size: 12pt;
-  font-weight: bold;
-  color: #000000;
-  border-bottom: 1px solid #0066cc;
-  padding-bottom: 2px;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.entry {
-  margin-bottom: 8px;
+  margin-bottom: 28px;
   page-break-inside: avoid;
 }
-.entry-header {
+
+.section-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+}
+
+/* Summary Section */
+.summary-content {
+  font-size: 11pt;
+  line-height: 1.7;
+  color: #374151;
+  text-align: justify;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 6px;
+  border-left: 4px solid #2563eb;
+}
+
+/* Experience Section */
+.experience-entry {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.experience-entry:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.experience-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 2px;
-}
-.entry-title {
-  font-weight: bold;
-  color: #000000;
-  margin: 0;
-  font-size: 11pt;
-}
-.entry-subtitle {
-  color: #0066cc;
-  font-style: italic;
-  font-size: 11pt;
-  margin: 2px 0;
-  font-weight: 500;
-}
-.entry-date {
-  color: #555555;
-  font-size: 10pt;
-  margin: 0;
-  font-weight: 500;
-}
-.entry ul {
-  margin: 4px 0;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-.entry li {
-  margin: 2px 0;
-  color: #333333;
-  font-size: 11pt;
-}
-.entry p {
-  margin: 3px 0;
-  color: #333333;
-  font-size: 11pt;
-}
-.summary-section {
-  margin-bottom: 12px;
-  color: #333333;
-  font-size: 11pt;
-  line-height: 1.5;
-}
-.skills-container {
-  margin-top: 4px;
-}
-.skills-list {
-  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
   flex-wrap: wrap;
   gap: 8px;
-  list-style: none;
-  padding: 0;
+}
+
+.experience-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.experience-company {
+  font-size: 11pt;
+  color: #2563eb;
+  font-weight: 600;
   margin: 4px 0;
 }
-.skills-list li {
-  background: #f0f7ff;
-  color: #0066cc;
-  padding: 3px 8px;
-  border-radius: 3px;
+
+.experience-date {
   font-size: 10pt;
+  color: #6b7280;
   font-weight: 500;
-  border: 1px solid #b3d9ff;
+  white-space: nowrap;
 }
-.awards-container {
-  margin-top: 4px;
+
+.experience-bullets {
+  margin-top: 8px;
+  padding-left: 0;
 }
-.award-item {
-  padding: 4px 0;
-  color: #333333;
+
+.experience-bullets li {
+  margin-bottom: 4px;
+  color: #374151;
   font-size: 11pt;
-  margin: 2px 0;
-  border-left: 3px solid #0066cc;
-  padding-left: 8px;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 16px;
 }
+
+.experience-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+/* Education Section */
+.education-entry {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid #10b981;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.education-degree {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.education-school {
+  font-size: 10pt;
+  color: #059669;
+  font-weight: 600;
+  margin: 2px 0;
+}
+
+.education-date {
+  font-size: 10pt;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.education-details {
+  font-size: 10pt;
+  color: #6b7280;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Skills Section */
+.skills-section {
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  list-style: none;
+}
+
+.skill-item {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1e40af;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10pt;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #93c5fd;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Awards Section */
+.awards-list {
+  list-style: none;
+  padding: 0;
+}
+
+.award-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  padding-left: 20px;
+}
+
+.award-item:last-child {
+  border-bottom: none;
+}
+
+.award-item::before {
+  content: '🏆';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  font-size: 12pt;
+}
+
+.award-text {
+  font-size: 11pt;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Print Styles */
 @media print {
   body {
     margin: 0;
     padding: 0;
+    background: white;
   }
+
   .resume-container {
     max-width: 100%;
     box-shadow: none;
-    padding: 0.75in;
+    border: none;
+    padding: 0.5in;
+  }
+
+  .experience-entry,
+  .education-entry {
+    break-inside: avoid;
+  }
+
+  .contact-link {
+    color: #000000 !important;
+    text-decoration: none !important;
   }
 }
-@media screen and (max-width: 800px) {
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
   .resume-container {
     padding: 0.5in;
   }
-  .contact-info {
+
+  .resume-name {
+    font-size: 24pt;
+  }
+
+  .contact-section {
     flex-direction: column;
+    gap: 8px;
+  }
+
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 4px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 }
   `;
 
   const expHtml = data.experience.map(e => `
-    <div class="entry">
-      <div class="entry-header">
-        <strong class="entry-title">${e.title}${e.company ? ', ' + e.company : ''}</strong>
-        <span class="entry-date">${e.date || ''}</span>
+    <div class="experience-entry">
+      <div class="experience-header">
+        <div>
+          <h3 class="experience-title">${e.title}</h3>
+          <div class="experience-company">${e.company || ''}</div>
+        </div>
+        <div class="experience-date">${e.date || ''}</div>
       </div>
-      ${e.bullets.length > 0 ? `<ul>${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
+      ${e.bullets.length > 0 ? `<ul class="experience-bullets">${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
     </div>
   `).join('');
 
   const eduHtml = data.education.map(e => `
-    <div class="entry">
-      <div class="entry-header">
-        <strong class="entry-title">${e.degree}${e.school ? ', ' + e.school : ''}</strong>
-        <span class="entry-date">${e.date || ''}</span>
+    <div class="education-entry">
+      <div class="education-header">
+        <div>
+          <h4 class="education-degree">${e.degree}</h4>
+          <div class="education-school">${e.school || ''}</div>
+        </div>
+        <div class="education-date">${e.date || ''}</div>
       </div>
-      ${e.details ? `<p>${e.details}</p>` : ''}
+      ${e.details ? `<div class="education-details">${e.details}</div>` : ''}
     </div>
   `).join('');
 
-  const skillsHtml = data.skills.length > 0 ? data.skills.map(s => `<li>${s}</li>`).join('') : '<li style="color: #999;">No technical skills provided</li>';
-  const awardsHtml = data.awards.length > 0 ? data.awards.map(a => `<div class="award-item">${a}</div>`).join('') : '<div class="award-item" style="color: #999;">No honors or certifications provided</div>';
+  const skillsHtml = data.skills.length > 0 ? data.skills.map(s => `<li class="skill-item">${s}</li>`).join('') : '<li class="skill-item" style="color: #999;">No technical skills provided</li>';
+  const awardsHtml = data.awards.length > 0 ? data.awards.map(a => `<li class="award-item"><span class="award-text">${a}</span></li>`).join('') : '<li class="award-item"><span class="award-text" style="color: #999;">No honors or certifications provided</span></li>';
 
   const contactLinks = [];
   if (data.email) contactLinks.push(`<a href="mailto:${data.email}">${data.email}</a>`);
@@ -317,44 +535,46 @@ body {
 <body>
   <div class="resume-container">
     <div class="resume-header">
-      <h1>${data.name || 'Your Name'}</h1>
-      <p>${data.title || 'Engineering Professional'}</p>
-      ${data.location ? `<p style="margin: 4px 0; color: #555555;">${data.location}</p>` : ''}
-      <div class="contact-info">
-        ${data.email ? `<a href="mailto:${data.email}">${data.email}</a>` : ''}
-        ${data.phone ? `<span>${data.phone}</span>` : ''}
-        ${data.linkedin ? `<a href="${data.linkedin}" target="_blank">LinkedIn</a>` : ''}
-        ${data.github ? `<a href="${data.github}" target="_blank">GitHub</a>` : ''}
+      <div class="name-title">
+        <h1 class="resume-name">${data.name || 'Your Name'}</h1>
+        <p class="resume-title">${data.title || 'Engineering Professional'}</p>
+        ${data.location ? `<p class="resume-location">${data.location}</p>` : ''}
+      </div>
+      <div class="contact-section">
+        ${data.email ? `<div class="contact-item"><a href="mailto:${data.email}" class="contact-link">${data.email}</a></div>` : ''}
+        ${data.phone ? `<div class="contact-item">${data.phone}</div>` : ''}
+        ${data.linkedin ? `<div class="contact-item"><a href="${data.linkedin}" target="_blank" class="contact-link">LinkedIn</a></div>` : ''}
+        ${data.github ? `<div class="contact-item"><a href="${data.github}" target="_blank" class="contact-link">GitHub</a></div>` : ''}
       </div>
     </div>
 
     ${data.summary ? `<div class="section">
-      <div class="section-title">Professional Summary</div>
-      <p class="summary-section">${data.summary}</p>
+      <h2 class="section-title">Professional Summary</h2>
+      <div class="summary-content">${data.summary}</div>
     </div>` : ''}
 
     ${data.experience.length > 0 ? `<div class="section">
-      <div class="section-title">Work Experience</div>
+      <h2 class="section-title">Professional Experience</h2>
       ${expHtml}
     </div>` : ''}
 
     ${data.education.length > 0 ? `<div class="section">
-      <div class="section-title">Education</div>
+      <h2 class="section-title">Education</h2>
       ${eduHtml}
     </div>` : ''}
 
     ${data.skills.length > 0 ? `<div class="section">
-      <div class="section-title">Technical Skills</div>
-      <div class="skills-container">
-        <ul class="skills-list">${skillsHtml}</ul>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-section">
+        <ul class="skills-grid">${skillsHtml}</ul>
       </div>
     </div>` : ''}
 
     ${data.awards.length > 0 ? `<div class="section">
-      <div class="section-title">Honors & Certifications</div>
-      <div class="awards-container">
+      <h2 class="section-title">Honors & Certifications</h2>
+      <ul class="awards-list">
         ${awardsHtml}
-      </div>
+      </ul>
     </div>` : ''}
   </div>
 </body>
