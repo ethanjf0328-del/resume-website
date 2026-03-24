@@ -1,42 +1,60 @@
-# Resume Portfolio Website
+# Resume to Website Converter
 
-A simple static resume website scaffold. Edit `index.html` with your details, and deploy via GitHub Pages, Netlify, or any static hosting.
+Convert any resume into a professional, shareable portfolio website in seconds.
 
-## Files
-- `index.html` — main resume content.
-- `styles.css` — layout and style.
-- `script.js` — optional interactivity.
+## Features
 
-## Customize
-1. Replace placeholder text (`Your Name`, `Your Job Title`, etc.) in `index.html`.
-2. Add more `.entry` blocks in `Work Experience`, `Education`, and `Projects`.
-3. Update contact links.
+- ✅ **Paste or Upload** — Text or PDF resume
+- ✅ **Auto-Parse** — Extracts name, contact, experience, education, skills, awards
+- ✅ **Instant Preview** — See your website live in the browser
+- ✅ **Download HTML** — Get a standalone, shareable HTML file
+- ✅ **Responsive Design** — Works perfectly on all devices
+- ✅ **Professional Theme** — Modern dark/blue portfolio look
 
-## Run locally
-Open `index.html` in the browser or use a local server:
+## How to Use
+
+1. **Paste Resume Text**
+   - Copy your resume text and paste into the textarea
+   - Click "Generate My Website"
+
+2. **Or Upload PDF**
+   - Select your resume PDF file
+   - Click "Import PDF"
+
+3. **Preview**
+   - See your website instantly in the preview
+
+4. **Download**
+   - Click "Download as HTML"
+   - Save and share the file
+
+## Deploy
+
+### GitHub Pages
+1. Fork this repo or create your own
+2. Push this code to GitHub
+3. Settings → Pages → Source: `master` + `/ (root)`
+4. Share the public URL: `https://yourusername.github.io/resume-website/`
+
+### Or Host Elsewhere
+- Download the generated HTML
+- Upload to any static hosting (Netlify, Vercel, etc.)
+
+## Local Testing
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit http://localhost:8000.
+Visit `http://localhost:8000`
 
-## Import options
-1. Paste full resume text into the import box and click `Import`.
-2. Or use `Import from PDF` to upload a PDF; the script uses PDF.js to extract text, then parses and fills the page.
+## Files
 
-## Deploy to the web for public access
-### GitHub Pages
-1. Create a GitHub repo and push this folder to the repo.
-2. In repo settings, enable GitHub Pages on `main` / `gh-pages` branch, root folder.
-3. Wait a few min and visit `https://<your-user>.github.io/<repo-name>/`.
+- `index.html` — Main converter UI
+- `styles.css` — Theme styling
+- `script.js` — Resume parser & HTML generator
+- `README.md` — This file
 
-### Netlify
-1. Drag & drop this folder to https://app.netlify.com/drop.
-2. Get a public URL instantly.
+## Customization
 
-### Vercel
-1. `vercel` CLI or web import from GitHub.
-2. Choose static deploy.
-
-Once deployed, anyone can visit your link in Chrome/Edge/Firefox.
+Edit `styles.css` to change colors, fonts, layout. The parser in `script.js` handles most resume formats automatically.
